@@ -1,0 +1,30 @@
+[project]
+name = "nl2cli"
+version = "0.1.0"
+description = "Natural language -> CLI command agent (Prompt Engineering project)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "gradio>=5.0,<6",
+    "openai>=1.40",
+    "python-dotenv>=1.0",
+    "openpyxl>=3.1",
+]
+
+[project.scripts]
+nl2cli-app = "nl2cli.app:main"
+nl2cli-eval = "nl2cli.evaluate:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nl2cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
